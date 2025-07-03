@@ -1,5 +1,4 @@
 import React from 'react';
-import ExerciseCard from './ExerciseCard';
 
 const ExerciseData = [
   {
@@ -117,33 +116,51 @@ const ExerciseData = [
   },
 ];
 
-
 const containerStyle = {
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'space-between',
   padding: '20px',
+  gap: '20px',
 };
 
-const cardWrapperStyle = {
-  flexBasis: '30%',  
-  marginBottom: '20px',
+const cardStyle = {
+  flex: '1 1 calc(30% - 20px)',
+  minWidth: '280px',
+  height: '370px',
+  backgroundColor: '#d7bbf1',
+  borderRadius: '15px',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+  padding: '20px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  textAlign: 'center',
   boxSizing: 'border-box',
+};
+
+const headingStyle = {
+  fontWeight: 'bold',
+  fontSize: '1.4rem',
+  marginBottom: '10px',
+  color: '#222',
 };
 
 const Exercises = () => {
   return (
     <div style={containerStyle}>
       {ExerciseData.map((exercise, index) => (
-        <div style={cardWrapperStyle} key={index}>
-          <ExerciseCard
-            title={exercise.title}
-            level={exercise.level}
-            muscle={exercise.muscles}
-            category={exercise.category}
-            description={exercise.description}
-            instructions={exercise.instructions}
-          />
+        <div style={cardStyle} key={index}>
+          <h2 style={headingStyle}>{exercise.title}</h2>
+          <p><strong>Level:</strong> {exercise.level}</p>
+          <p><strong>Muscles:</strong> {exercise.muscles}</p>
+          <p><strong>Category:</strong> {exercise.category}</p>
+          <p>{exercise.description}</p>
+          <ul style={{ textAlign: 'left', marginTop: '10px' }}>
+            {exercise.instructions.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>

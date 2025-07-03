@@ -1,3 +1,5 @@
+import WorkoutPlanSelector from "./WorkoutPlanSelector";
+
 function Workout() {
   return (
     <div className="container">
@@ -28,6 +30,7 @@ function Workout() {
           </div>
         </div>
       </div>
+      <WorkoutPlanSelector/>
     </div>
   );
 }
