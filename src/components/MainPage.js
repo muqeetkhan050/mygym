@@ -1,12 +1,23 @@
+import React from "react";
 import WorkoutLogger from "./WorkoutLogger";
+import GymTaglineWithButton from "./GymTaglineWithButton";
+import FullScreenBanner from "./FullScreenBanner";
 
 function MainPage() {
+  const containerStyle = {
+    width: "100vw",
+    height: "100%",
+    margin: 0,
+    padding: 0,
+    overflowX: "hidden",
+  };
+
   return (
-    <div className="container">
-      <h1 className="text-center my-4">Welcome to My Gym</h1>
-      <WorkoutLogger/>
+    <div style={containerStyle}>
+      <FullScreenBanner />
+      <GymTaglineWithButton />
     </div>
   );
-}           
+}
 
 export default MainPage;

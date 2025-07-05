@@ -1,3 +1,6 @@
+import WorkoutLogger from "./WorkoutLogger";        
+
+
 function Dashboard() {
   return (
     <div className="container">
@@ -28,6 +31,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <WorkoutLogger/>
     </div>
   );
 }
