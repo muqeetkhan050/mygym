@@ -1,6 +1,22 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+import { useAuth } from "../Context/AuthContext"; 
 
 function HeaderExtend() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate("/LoginPage");
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light"
@@ -8,30 +24,16 @@ function HeaderExtend() {
         backgroundColor: '#d4b7ee',
         paddingTop: '20px',
         paddingBottom: '20px',
-        justifyContent: 'center',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: '40px',
+        paddingRight: '40px',
       }}
     >
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div
-        className="collapse navbar-collapse"
-        id="navbarNav"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <ul className="navbar-nav" style={{ gap: '20px', alignItems: 'center' }}>
+      {/* Left side links */}
+      <div>
+        <ul className="navbar-nav" style={{ display: 'flex', gap: '20px', alignItems: 'center', listStyle: 'none', margin: 0 }}>
           <li className="nav-item active">
             <Link className="nav-link" to="/" style={{ fontSize: '1.1rem' }}>
               Home
@@ -54,6 +56,24 @@ function HeaderExtend() {
           </li>
         </ul>
       </div>
+
+      {/* Right side: Sign out */}
+      {user && (
+        <button
+          onClick={handleSignOut}
+          style={{
+            backgroundColor: '#9333ea',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            padding: '8px 16px',
+            fontSize: '0.95rem',
+            cursor: 'pointer',
+          }}
+        >
+          Sign Out
+        </button>
+      )}
     </nav>
   );
 }
