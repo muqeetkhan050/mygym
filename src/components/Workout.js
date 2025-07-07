@@ -1,8 +1,12 @@
+import HeaderExtend from "./HeaderExtend";
 import WorkoutPlanSelector from "./WorkoutPlanSelector";
 
 function Workout() {
   return (
+    <>
+    <HeaderExtend/>
     <div className="container">
+
       <h1 className="text-center my-4">Workout Plans</h1>
       <div className="row">
         <div className="col-md-4">
@@ -31,7 +35,7 @@ function Workout() {
         </div>
       </div>
       <WorkoutPlanSelector/>
-    </div>
+    </div></>
   );
 }
 

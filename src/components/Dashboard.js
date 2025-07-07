@@ -1,9 +1,11 @@
 import WorkoutLogger from "./WorkoutLogger";        
-
+import HeaderExtend from "./HeaderExtend";
 
 function Dashboard() {
   return (
+    <>    <HeaderExtend/>
     <div className="container">
+    
       <h1 className="text-center my-4">Dashboard</h1>
       <div className="row">
         <div className="col-md-4">
@@ -33,6 +35,7 @@ function Dashboard() {
       </div>
       <WorkoutLogger/>
     </div>
+    </>
   );
 }
 

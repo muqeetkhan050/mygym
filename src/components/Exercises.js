@@ -1,4 +1,5 @@
 import React from 'react';
+import HeaderExtend from './HeaderExtend';
 
 const ExerciseData = [
   {
@@ -148,6 +149,8 @@ const headingStyle = {
 
 const Exercises = () => {
   return (
+    <>
+    <HeaderExtend/>
     <div style={containerStyle}>
       {ExerciseData.map((exercise, index) => (
         <div style={cardStyle} key={index}>
@@ -164,6 +167,7 @@ const Exercises = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 

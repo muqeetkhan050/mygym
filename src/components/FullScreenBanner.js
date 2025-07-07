@@ -1,6 +1,9 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 function FullScreenBanner() {
+
+  
+
   const navbarHeight = 60; // Adjust if your navbar is taller
 
   const wrapper = {
@@ -57,7 +60,7 @@ function FullScreenBanner() {
         </h1>
       </div>
       <div style={rightStyle}>
-        <button style={buttonStyle}>Start Now</button>
+       <Link to='/Dashboard' style={buttonStyle}>Start Now</Link>
       </div>
     </div>
   );
