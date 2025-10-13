@@ -6,12 +6,12 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // ✅ Add this
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setUser(user);
-      setLoading(false); // ✅ Now it works
+      setLoading(false); =
     });
     return () => unsub();
   }, []);
